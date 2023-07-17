@@ -3,6 +3,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link } from 'react-router-dom';
 import "./Home.scss";
 import heroImg from "../../assets/inventory.jpg";
+import { ShowOnLogin, ShowOnLogout } from '../../components/protect/HiddenLink';
 
 const Home = () => {
   return (
@@ -12,25 +13,31 @@ const Home = () => {
                 <InventoryIcon />
             </div>
             <ul className="home-links">
-                <li>
-                    <Link to="/register" >
-                        Register
-                    </Link>
-                </li>
-                <li>
-                    <button className="--btn --btn-primary">
-                        <Link to="/login">
-                            Login
+                <ShowOnLogout>
+                    <li>
+                        <Link to="/register" >
+                            Register
                         </Link>
-                    </button>
-                </li>
-                <li>
-                    <button className="--btn --btn-primary">
-                        <Link to="/dashboard">
-                            Dashboard
-                        </Link>
-                    </button>
-                </li>
+                    </li>
+                </ShowOnLogout>
+                <ShowOnLogout>
+                    <li>
+                        <button className="--btn --btn-primary">
+                            <Link to="/login">
+                                Login
+                            </Link>
+                        </button>
+                    </li>
+                </ShowOnLogout>
+                <ShowOnLogin>
+                    <li>
+                        <button className="--btn --btn-primary">
+                            <Link to="/dashboard">
+                                Dashboard
+                            </Link>
+                        </button>
+                    </li>
+                </ShowOnLogin>
             </ul>
         </nav>
         {/* HERO SECTION */}
